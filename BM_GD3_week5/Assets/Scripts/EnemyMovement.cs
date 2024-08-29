@@ -19,5 +19,10 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         rb.AddForce((player.transform.position - transform.position).normalized * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
