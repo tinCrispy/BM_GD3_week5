@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public GameObject bossEnemy;
     public GameObject enemyPrefab;
     public GameObject powerUpPrefab;
     private float spawnRange = 20;
@@ -27,6 +28,12 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(waveNumber);
             waveNumber++;
             Instantiate(powerUpPrefab, GenerateSpawnPosition(), powerUpPrefab.transform.rotation);
+
+            if (waveNumber % 5 == 0)
+            {
+                Instantiate(bossEnemy, GenerateSpawnPosition(), bossEnemy.transform.rotation); 
+            }
+
        }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -48,6 +55,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
+
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
 
