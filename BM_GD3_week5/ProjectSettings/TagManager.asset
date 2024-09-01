@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - RepelPowerUp
   - JumpPowerUp
+  - Rock
+  - CollisionDetector
+  - MinePowerUp
   layers:
   - Default
   - TransparentFX

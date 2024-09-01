@@ -24,5 +24,31 @@ public class EnemyMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (GetComponent<Rigidbody>().velocity.sqrMagnitude < 1)
+        {
+            StartCoroutine(amIStuckRoutine());
+
+        }
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("CollisionDetector"))
+        {
+            Destroy(gameObject) ;
+            Debug.Log("enemy deleted");
+        }
+    }
+
+    IEnumerator amIStuckRoutine()
+    {
+        yield return new WaitForSeconds(5);
+
+        if (GetComponent<Rigidbody>().velocity.sqrMagnitude < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
